@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NCSET-2026 | Abstract Submission</title>
+
+    <!-- MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [
+                    ['\\(', '\\)']
+                ],
+                displayMath: [
+                    ['\\[', '\\]'],
+                    ['$$', '$$']
+                ]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f5f8;
+            color: #222;
+        }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        header {
+            background: #7a0019;
+            color: white;
+            padding: 22px 40px;
+        }
+
+        header h1 {
+            margin: 4px 0 0;
+            font-size: 25px;
+            line-height: 1.35;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            font-size: 14px;
+            opacity: 0.92;
+        }
+
+        .conference-code {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffd9df;
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            margin-top: 10px;
+            color: #ffecef;
+        }
+
+        /* =========================================
+           MAIN LAYOUT
+           ========================================= */
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 1500px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #7a0019;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* =========================================
+           FORM
+           ========================================= */
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 18px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #7a0019;
+            box-shadow: 0 0 0 2px rgba(122, 0, 25, 0.08);
+        }
+
+        textarea {
+            min-height: 250px;
+            resize: vertical;
+            line-height: 1.5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* =========================================
+           AUTHORS
+           ========================================= */
+
+        .author-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 15px;
+            background: #fafafa;
+        }
+
+        .author-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .author-number {
+            font-weight: bold;
+            color: #7a0019;
+        }
+
+        .author-card label {
+            margin-top: 12px;
+        }
+
+        .affiliation-selection {
+            margin-top: 15px;
+        }
+
+        .affiliation-selection-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .affiliation-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .affiliation-checkbox input {
+            width: auto;
+            margin: 2px 0 0;
+        }
+
+        .corresponding-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 6px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .corresponding-author input {
+            width: auto;
+            margin: 0;
+        }
+
+        /* =========================================
+           AFFILIATIONS
+           ========================================= */
+
+        .affiliation-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .affiliation-number {
+            min-width: 28px;
+            font-weight: bold;
+            color: #7a0019;
+            text-align: center;
+        }
+
+        /* =========================================
+           BUTTONS
+           ========================================= */
+
+        button {
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .add-btn {
+            margin-top: 15px;
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .add-btn:hover {
+            background: #ddd;
+        }
+
+        .remove-btn {
+            background: #f8d7da;
+            color: #842029;
+            padding: 7px 12px;
+        }
+
+        .remove-btn:hover {
+            background: #f1bfc5;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 25px;
+            background: #7a0019;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 13px;
+        }
+
+        .submit-btn:hover {
+            background: #5d0014;
+        }
+
+        /* =========================================
+           VALIDATION
+           ========================================= */
+
+        .error-message {
+            display: none;
+            margin-top: 20px;
+            padding: 12px 15px;
+            background: #f8d7da;
+            color: #842029;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .error-message ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 12px 15px;
+            background: #d1e7dd;
+            color: #0f5132;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .input-error {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.08);
+        }
+
+        /* =========================================
+           PREVIEW
+           ========================================= */
+
+        .preview-paper {
+            border: 1px solid #ddd;
+            padding: 45px;
+            min-height: 700px;
+            background: white;
+        }
+
+        .preview-title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .preview-authors {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        .preview-affiliations {
+            text-align: center;
+            font-size: 14px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        .corresponding-note {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 12px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .section-heading {
+            font-weight: bold;
+            font-size: 17px;
+            margin-top: 25px;
+            margin-bottom: 8px;
+        }
+
+        .abstract-content {
+            text-align: justify;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .keywords-content {
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (max-width: 900px) {
+
+            .container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .preview-paper {
+                padding: 25px;
+            }
+
+            .affiliation-row {
+                align-items: stretch;
+            }
+
+            .affiliation-row input {
+                min-width: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+    <div class="conference-brand">
+        <div class="conference-code">NCSET-2026</div>
+        <h1>National Conference on Science, Engineering and Technology</h1>
+        <p>Organised by School of Advanced Sciences, VIT, Chennai</p>
+        <p class="header-subtitle">Abstract Submission Portal · Live LaTeX Preview</p>
+    </div>
+</header>
+
+
+<div class="container">
+
+
+    <!-- =========================================
+         LEFT: SUBMISSION FORM
+         ========================================= -->
+
+    <div class="card">
+
+        <h2>Abstract Submission</h2>
+
+
+        <!-- TITLE -->
+
+        <label for="title">
+            Title *
+        </label>
+
+        <input
+            type="text"
+            id="title"
+            placeholder="Enter the title of your paper"
+        >
+
+
+        <!-- AUTHORS -->
+
+        <label>
+            Authors *
+        </label>
+
+        <div id="authorsContainer"></div>
+
+        <button
+            type="button"
+            class="add-btn"
+            onclick="addAuthor()"
+        >
+            + Add Author
+        </button>
+
+
+        <!-- AFFILIATIONS -->
+
+        <label>
+            Affiliations *
+        </label>
+
+        <div id="affiliationsContainer"></div>
+
+        <button
+            type="button"
+            class="add-btn"
+            onclick="addAffiliation()"
+        >
+            + Add Affiliation
+        </button>
+
+
+        <!-- ABSTRACT -->
+
+        <label for="abstract">
+            Abstract *
+        </label>
+
+        <textarea
+            id="abstract"
+            placeholder="Enter your abstract here.
+
+LaTeX is supported.
+
+Example:
+We study the equation \(D_t^\alpha u(x,t)=\Delta u(x,t)\).
+
+For display mathematics:
+
+$$
+\int_0^1 x^2\,dx
+=
+\frac{1}{3}
+$$"
+        ></textarea>
+
+
+        <!-- KEYWORDS -->
+
+        <label for="keywords">
+            Keywords *
+        </label>
+
+        <input
+            type="text"
+            id="keywords"
+            placeholder="Keyword 1, Keyword 2, Keyword 3"
+        >
+        <label for="Note">
+            Please check the Live Preview before submitting the abstract. Kindly don't submit the abstract multiple times. 
+        </label>
+
+        <!-- VALIDATION MESSAGES -->
+
+        <div
+            id="formErrors"
+            class="error-message"
+        ></div>
+
+        <div
+            id="formSuccess"
+            class="success-message"
+        ></div>
+
+
+        <!-- ONLY SUBMIT BUTTON -->
+
+        <button
+            type="button"
+            class="submit-btn"
+            onclick="validateAndSubmit()"
+        >
+            Submit Abstract
+        </button>
+
+
+    </div>
+
+
+    <!-- =========================================
+         RIGHT: LIVE PREVIEW
+         ========================================= -->
+
+    <div class="card">
+
+        <h2>Live Preview</h2>
+
+        <div class="preview-paper">
+
+
+            <div
+                id="previewTitle"
+                class="preview-title"
+            >
+                YOUR PAPER TITLE
+            </div>
+
+
+            <div
+                id="previewAuthors"
+                class="preview-authors"
+            >
+                Author Name
+            </div>
+
+
+            <div
+                id="previewAffiliations"
+                class="preview-affiliations"
+            >
+                Affiliation
+            </div>
+
+
+            <div
+                id="previewCorresponding"
+                class="corresponding-note"
+            ></div>
+
+
+            <div class="section-heading">
+                Abstract
+            </div>
+
+            <div
+                id="previewAbstract"
+                class="abstract-content"
+            >
+                Your abstract will appear here.
+            </div>
+
+
+            <div class="section-heading">
+                Keywords
+            </div>
+
+            <div
+                id="previewKeywords"
+                class="keywords-content"
+            >
+                Your keywords will appear here.
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    let authorCount = 0;
+    let affiliationCount = 0;
+
+
+    // =========================================
+    // INITIAL SETUP
+    // =========================================
+
+    window.addEventListener(
+        "load",
+        function() {
+
+            addAffiliation();
+            addAuthor();
+
+            updatePreview();
+
+        }
+    );
+
+
+    // =========================================
+    // ADD AFFILIATION
+    // =========================================
+
+    function addAffiliation() {
+
+        affiliationCount++;
+
+        const container =
+            document.getElementById(
+                "affiliationsContainer"
+            );
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "affiliation-row";
+
+        row.dataset.affiliationId =
+            affiliationCount;
+
+        row.innerHTML = `
+            <span class="affiliation-number">
+                ${affiliationCount}
+            </span>
+
+            <input
+                type="text"
+                class="affiliation-input"
+                placeholder="Department, Institution, Country"
+            >
+
+            <button
+                type="button"
+                class="remove-btn"
+                onclick="removeAffiliation(${affiliationCount})"
+            >
+                Remove
+            </button>
+        `;
+
+        container.appendChild(row);
+
+        const affiliationInput =
+            row.querySelector(
+                ".affiliation-input"
+            );
+
+        affiliationInput.addEventListener(
+            "input",
+            function() {
+
+                updateAuthorAffiliationOptions();
+                updatePreview();
+
+            }
+        );
+
+        updateAuthorAffiliationOptions();
+        updatePreview();
+
+    }
+
+
+    // =========================================
+    // REMOVE AFFILIATION
+    // =========================================
+
+    function removeAffiliation(id) {
+
+        const rows =
+            document.querySelectorAll(
+                ".affiliation-row"
+            );
+
+        if (rows.length <= 1) {
+
+            alert(
+                "At least one affiliation is required."
+            );
+
+            return;
+
+        }
+
+        const row =
+            document.querySelector(
+                `[data-affiliation-id="${id}"]`
+            );
+
+        if (row) {
+            row.remove();
+        }
+
+        renumberAffiliations();
+        updateAuthorAffiliationOptions();
+        updatePreview();
+
+    }
+
+
+    // =========================================
+    // RENUMBER AFFILIATIONS
+    // =========================================
+
+    function renumberAffiliations() {
+
+        const rows =
+            document.querySelectorAll(
+                ".affiliation-row"
+            );
+
+        rows.forEach(
+            function(row, index) {
+
+                const newId =
+                    index + 1;
+
+                row.dataset.affiliationId =
+                    newId;
+
+                row.querySelector(
+                    ".affiliation-number"
+                ).textContent =
+                    newId;
+
+                row.querySelector(
+                    ".remove-btn"
+                ).setAttribute(
+                    "onclick",
+                    `removeAffiliation(${newId})`
+                );
+
+            }
+        );
+
+        affiliationCount =
+            rows.length;
+
+    }
+
+
+    // =========================================
+    // ADD AUTHOR
+    // =========================================
+
+    function addAuthor() {
+
+        authorCount++;
+
+        const container =
+            document.getElementById(
+                "authorsContainer"
+            );
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "author-card";
+
+        card.dataset.authorId =
+            authorCount;
+
+        card.innerHTML = `
+            <div class="author-header">
+
+                <span class="author-number">
+                    Author ${authorCount}
+                </span>
+
+                <button
+                    type="button"
+                    class="remove-btn"
+                    onclick="removeAuthor(${authorCount})"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+            <label>
+                Author Name *
+            </label>
+
+            <input
+                type="text"
+                class="author-name"
+                placeholder="Enter author name"
+            >
+
+            <label>
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                class="author-email"
+                placeholder="Enter email address"
+            >
+
+            <label class="corresponding-author">
+
+                <input
+                    type="checkbox"
+                    class="corresponding-check"
+                >
+
+                <span>
+                    Corresponding Author
+                </span>
+
+            </label>
+
+            <div class="affiliation-selection">
+
+                <div class="affiliation-selection-title">
+                    Select affiliation(s) *
+                </div>
+
+                <div
+                    class="author-affiliation-options"
+                ></div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+
+        card.querySelector(
+            ".author-name"
+        ).addEventListener(
+            "input",
+            updatePreview
+        );
+
+
+        card.querySelector(
+            ".author-email"
+        ).addEventListener(
+            "input",
+            updatePreview
+        );
+
+
+        card.querySelector(
+            ".corresponding-check"
+        ).addEventListener(
+            "change",
+            function() {
+
+                if (this.checked) {
+
+                    document
+                        .querySelectorAll(
+                            ".corresponding-check"
+                        )
+                        .forEach(
+                            checkbox => {
+
+                                if (
+                                    checkbox !== this
+                                ) {
+
+                                    checkbox.checked =
+                                        false;
+
+                                }
+
+                            }
+                        );
+
+                }
+
+                updatePreview();
+
+            }
+        );
+
+
+        updateAuthorAffiliationOptions();
+        updatePreview();
+
+    }
+
+
+    // =========================================
+    // REMOVE AUTHOR
+    // =========================================
+
+    function removeAuthor(id) {
+
+        const cards =
+            document.querySelectorAll(
+                ".author-card"
+            );
+
+        if (cards.length <= 1) {
+
+            alert(
+                "At least one author is required."
+            );
+
+            return;
+
+        }
+
+        const card =
+            document.querySelector(
+                `[data-author-id="${id}"]`
+            );
+
+        if (card) {
+            card.remove();
+        }
+
+        renumberAuthors();
+        updatePreview();
+
+    }
+
+
+    // =========================================
+    // RENUMBER AUTHORS
+    // =========================================
+
+    function renumberAuthors() {
+
+        const cards =
+            document.querySelectorAll(
+                ".author-card"
+            );
+
+        cards.forEach(
+            function(card, index) {
+
+                const newId =
+                    index + 1;
+
+                card.dataset.authorId =
+                    newId;
+
+                card.querySelector(
+                    ".author-number"
+                ).textContent =
+                    `Author ${newId}`;
+
+                card.querySelector(
+                    ".remove-btn"
+                ).setAttribute(
+                    "onclick",
+                    `removeAuthor(${newId})`
+                );
+
+            }
+        );
+
+        authorCount =
+            cards.length;
+
+    }
+
+
+    // =========================================
+    // UPDATE AFFILIATION OPTIONS
+    // =========================================
+
+    function updateAuthorAffiliationOptions() {
+
+        const affiliations = [];
+
+        document
+            .querySelectorAll(
+                ".affiliation-row"
+            )
+            .forEach(
+                function(row) {
+
+                    affiliations.push({
+
+                        id:
+                            row.dataset.affiliationId,
+
+                        text:
+                            row
+                                .querySelector(
+                                    ".affiliation-input"
+                                )
+                                .value
+
+                    });
+
+                }
+            );
+
+
+        document
+            .querySelectorAll(
+                ".author-card"
+            )
+            .forEach(
+                function(card) {
+
+                    const selected =
+                        Array.from(
+                            card.querySelectorAll(
+                                ".affiliation-check:checked"
+                            )
+                        )
+                        .map(
+                            checkbox =>
+                                checkbox.value
+                        );
+
+                    const options =
+                        card.querySelector(
+                            ".author-affiliation-options"
+                        );
+
+                    options.innerHTML = "";
+
+                    affiliations.forEach(
+                        function(affiliation) {
+
+                            const label =
+                                document.createElement(
+                                    "label"
+                                );
+
+                            label.className =
+                                "affiliation-checkbox";
+
+                            const checkbox =
+                                document.createElement(
+                                    "input"
+                                );
+
+                            checkbox.type =
+                                "checkbox";
+
+                            checkbox.className =
+                                "affiliation-check";
+
+                            checkbox.value =
+                                affiliation.id;
+
+                            checkbox.checked =
+                                selected.includes(
+                                    affiliation.id
+                                );
+
+                            checkbox.addEventListener(
+                                "change",
+                                updatePreview
+                            );
+
+                            const text =
+                                document.createTextNode(
+                                    `${affiliation.id}. ${
+                                        affiliation.text ||
+                                        "Affiliation"
+                                    }`
+                                );
+
+                            label.appendChild(
+                                checkbox
+                            );
+
+                            label.appendChild(
+                                text
+                            );
+
+                            options.appendChild(
+                                label
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+
+    // =========================================
+    // SAFE PREVIEW TEXT
+    // =========================================
+
+    function setPreviewText(
+        element,
+        text,
+        fallback
+    ) {
+
+        element.textContent =
+            text || fallback;
+
+    }
+
+
+    // =========================================
+    // UPDATE LIVE PREVIEW
+    // =========================================
+
+    function updatePreview() {
+
+        const previewTitle =
+            document.getElementById(
+                "previewTitle"
+            );
+
+        const previewAuthors =
+            document.getElementById(
+                "previewAuthors"
+            );
+
+        const previewAffiliations =
+            document.getElementById(
+                "previewAffiliations"
+            );
+
+        const previewCorresponding =
+            document.getElementById(
+                "previewCorresponding"
+            );
+
+        const previewAbstract =
+            document.getElementById(
+                "previewAbstract"
+            );
+
+        const previewKeywords =
+            document.getElementById(
+                "previewKeywords"
+            );
+
+
+        // TITLE
+
+        setPreviewText(
+            previewTitle,
+            document
+                .getElementById("title")
+                .value
+                .trim(),
+            "YOUR PAPER TITLE"
+        );
+
+
+        // AUTHORS
+
+        const authorData = [];
+
+        document
+            .querySelectorAll(
+                ".author-card"
+            )
+            .forEach(
+                function(card) {
+
+                    const name =
+                        card
+                            .querySelector(
+                                ".author-name"
+                            )
+                            .value
+                            .trim();
+
+                    const email =
+                        card
+                            .querySelector(
+                                ".author-email"
+                            )
+                            .value
+                            .trim();
+
+                    const corresponding =
+                        card
+                            .querySelector(
+                                ".corresponding-check"
+                            )
+                            .checked;
+
+                    const affiliations =
+                        Array.from(
+                            card.querySelectorAll(
+                                ".affiliation-check:checked"
+                            )
+                        )
+                        .map(
+                            checkbox =>
+                                checkbox.value
+                        );
+
+                    if (name) {
+
+                        authorData.push({
+                            name,
+                            email,
+                            corresponding,
+                            affiliations
+                        });
+
+                    }
+
+                }
+            );
+
+
+        if (
+            authorData.length > 0
+        ) {
+
+            previewAuthors.innerHTML =
+                authorData
+                    .map(
+                        function(author) {
+
+                            const authorName =
+                                document
+                                    .createElement(
+                                        "span"
+                                    );
+
+                            authorName.textContent =
+                                author.name;
+
+                            let html =
+                                authorName.innerHTML;
+
+                            if (
+                                author.affiliations.length > 0
+                            ) {
+
+                                html +=
+                                    `<sup>${
+                                        author
+                                            .affiliations
+                                            .join(",")
+                                    }</sup>`;
+
+                            }
+
+                            if (
+                                author.corresponding
+                            ) {
+
+                                html +=
+                                    "<sup>*</sup>";
+
+                            }
+
+                            return html;
+
+                        }
+                    )
+                    .join(", ");
+
+        }
+
+        else {
+
+            previewAuthors.textContent =
+                "Author Name";
+
+        }
+
+
+        // AFFILIATIONS
+
+        const affiliationRows =
+            Array.from(
+                document.querySelectorAll(
+                    ".affiliation-row"
+                )
+            );
+
+        previewAffiliations.innerHTML = "";
+
+        let hasAffiliation = false;
+
+        affiliationRows.forEach(
+            function(row) {
+
+                const id =
+                    row.dataset.affiliationId;
+
+                const text =
+                    row
+                        .querySelector(
+                            ".affiliation-input"
+                        )
+                        .value
+                        .trim();
+
+                if (text) {
+
+                    const line =
+                        document.createElement(
+                            "div"
+                        );
+
+                    const number =
+                        document.createElement(
+                            "sup"
+                        );
+
+                    number.textContent =
+                        id;
+
+                    const textNode =
+                        document.createTextNode(
+                            ` ${text}`
+                        );
+
+                    line.appendChild(number);
+                    line.appendChild(textNode);
+
+                    previewAffiliations.appendChild(
+                        line
+                    );
+
+                    hasAffiliation = true;
+
+                }
+
+            }
+        );
+
+        if (!hasAffiliation) {
+
+            previewAffiliations.textContent =
+                "Affiliation";
+
+        }
+
+
+        // CORRESPONDING AUTHOR
+
+        const correspondingAuthor =
+            authorData.find(
+                author =>
+                    author.corresponding
+            );
+
+        if (correspondingAuthor) {
+
+            previewCorresponding.textContent =
+                correspondingAuthor.email
+                    ? `* Corresponding Author: ${correspondingAuthor.email}`
+                    : "* Corresponding Author";
+
+        }
+
+        else {
+
+            previewCorresponding.textContent =
+                "";
+
+        }
+
+
+        // ABSTRACT
+
+        setPreviewText(
+            previewAbstract,
+            document
+                .getElementById("abstract")
+                .value,
+            "Your abstract will appear here."
+        );
+
+
+        // KEYWORDS
+
+        setPreviewText(
+            previewKeywords,
+            document
+                .getElementById("keywords")
+                .value
+                .trim(),
+            "Your keywords will appear here."
+        );
+
+
+        // MATHJAX
+
+        const elements = [
+            previewTitle,
+            previewAuthors,
+            previewAffiliations,
+            previewCorresponding,
+            previewAbstract,
+            previewKeywords
+        ];
+
+        if (window.MathJax) {
+
+            MathJax.typesetClear(
+                elements
+            );
+
+            MathJax
+                .typesetPromise(
+                    elements
+                )
+                .catch(
+                    function(error) {
+
+                        console.log(
+                            "MathJax Error:",
+                            error
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+
+
+    // =========================================
+    // FORM VALIDATION
+    // =========================================
+
+    function validateAndSubmit() {
+
+        const errors = [];
+
+        const errorBox =
+            document.getElementById(
+                "formErrors"
+            );
+
+        const successBox =
+            document.getElementById(
+                "formSuccess"
+            );
+
+
+        // Reset old messages
+
+        errorBox.style.display =
+            "none";
+
+        successBox.style.display =
+            "none";
+
+        document
+            .querySelectorAll(
+                ".input-error"
+            )
+            .forEach(
+                element =>
+                    element.classList.remove(
+                        "input-error"
+                    )
+            );
+
+
+        // TITLE
+
+        const titleInput =
+            document.getElementById(
+                "title"
+            );
+
+        if (
+            !titleInput.value.trim()
+        ) {
+
+            errors.push(
+                "Please enter the title of the paper."
+            );
+
+            titleInput.classList.add(
+                "input-error"
+            );
+
+        }
+
+
+        // AUTHORS
+
+        const authorCards =
+            document.querySelectorAll(
+                ".author-card"
+            );
+
+        let correspondingCount = 0;
+        let correspondingEmail = null;
+
+        authorCards.forEach(
+            function(card, index) {
+
+                const nameInput =
+                    card.querySelector(
+                        ".author-name"
+                    );
+
+                const emailInput =
+                    card.querySelector(
+                        ".author-email"
+                    );
+
+                const correspondingCheck =
+                    card.querySelector(
+                        ".corresponding-check"
+                    );
+
+                const selectedAffiliations =
+                    card.querySelectorAll(
+                        ".affiliation-check:checked"
+                    );
+
+
+                if (
+                    !nameInput.value.trim()
+                ) {
+
+                    errors.push(
+                        `Please enter the name of Author ${index + 1}.`
+                    );
+
+                    nameInput.classList.add(
+                        "input-error"
+                    );
+
+                }
+
+
+                if (
+                    selectedAffiliations.length === 0
+                ) {
+
+                    errors.push(
+                        `Please select at least one affiliation for Author ${index + 1}.`
+                    );
+
+                }
+
+
+                if (
+                    correspondingCheck.checked
+                ) {
+
+                    correspondingCount++;
+
+                    correspondingEmail = {
+                        value:
+                            emailInput.value.trim(),
+
+                        input:
+                            emailInput
+                    };
+
+                }
+
+            }
+        );
+
+
+        // CORRESPONDING AUTHOR
+
+        if (
+            correspondingCount === 0
+        ) {
+
+            errors.push(
+                "Please select one corresponding author."
+            );
+
+        }
+
+
+        if (
+            correspondingCount > 1
+        ) {
+
+            errors.push(
+                "Only one corresponding author can be selected."
+            );
+
+        }
+
+
+        // CORRESPONDING EMAIL
+
+        if (
+            correspondingCount === 1 &&
+            correspondingEmail
+        ) {
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (
+                !correspondingEmail.value
+            ) {
+
+                errors.push(
+                    "Please enter the corresponding author's email address."
+                );
+
+                correspondingEmail.input.classList.add(
+                    "input-error"
+                );
+
+            }
+
+            else if (
+                !emailPattern.test(
+                    correspondingEmail.value
+                )
+            ) {
+
+                errors.push(
+                    "Please enter a valid corresponding author email address."
+                );
+
+                correspondingEmail.input.classList.add(
+                    "input-error"
+                );
+
+            }
+
+        }
+
+
+        // AFFILIATIONS
+
+        const affiliationInputs =
+            document.querySelectorAll(
+                ".affiliation-input"
+            );
+
+        let validAffiliations = 0;
+
+        affiliationInputs.forEach(
+            function(input) {
+
+                if (
+                    input.value.trim()
+                ) {
+
+                    validAffiliations++;
+
+                }
+
+            }
+        );
+
+        if (
+            validAffiliations === 0
+        ) {
+
+            errors.push(
+                "Please enter at least one affiliation."
+            );
+
+        }
+
+
+        // ABSTRACT
+
+        const abstractInput =
+            document.getElementById(
+                "abstract"
+            );
+
+        if (
+            !abstractInput.value.trim()
+        ) {
+
+            errors.push(
+                "Please enter the abstract."
+            );
+
+            abstractInput.classList.add(
+                "input-error"
+            );
+
+        }
+
+
+        // KEYWORDS
+
+        const keywordsInput =
+            document.getElementById(
+                "keywords"
+            );
+
+        if (
+            !keywordsInput.value.trim()
+        ) {
+
+            errors.push(
+                "Please enter the keywords."
+            );
+
+            keywordsInput.classList.add(
+                "input-error"
+            );
+
+        }
+
+
+        // SHOW ERRORS
+
+        if (
+            errors.length > 0
+        ) {
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong><ul>" +
+                errors
+                    .map(
+                        error =>
+                            `<li>${error}</li>`
+                    )
+                    .join("") +
+                "</ul>";
+
+            errorBox.style.display =
+                "block";
+
+            errorBox.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+
+        }
+
+
+        // =========================================
+        // COLLECT FORM DATA
+        // =========================================
+
+        const authors = [];
+
+        document
+            .querySelectorAll(".author-card")
+            .forEach(
+                function(card, index) {
+
+                    const selectedAffiliations =
+                        Array.from(
+                            card.querySelectorAll(
+                                ".affiliation-check:checked"
+                            )
+                        )
+                        .map(
+                            checkbox =>
+                                Number(checkbox.value)
+                        );
+
+
+                    authors.push({
+
+                        author_order:
+                            index + 1,
+
+                        name:
+                            card
+                                .querySelector(
+                                    ".author-name"
+                                )
+                                .value
+                                .trim(),
+
+                        email:
+                            card
+                                .querySelector(
+                                    ".author-email"
+                                )
+                                .value
+                                .trim(),
+
+                        is_corresponding:
+                            card
+                                .querySelector(
+                                    ".corresponding-check"
+                                )
+                                .checked,
+
+                        affiliations:
+                            selectedAffiliations
+
+                    });
+
+                }
+            );
+
+
+
+        const affiliations = [];
+
+        document
+            .querySelectorAll(
+                ".affiliation-row"
+            )
+            .forEach(
+                function(row, index) {
+
+                    affiliations.push({
+
+                        affiliation_number:
+                            index + 1,
+
+                        affiliation:
+                            row
+                                .querySelector(
+                                    ".affiliation-input"
+                                )
+                                .value
+                                .trim()
+
+                    });
+
+                }
+            );
+
+
+
+        const submissionData = {
+
+            title:
+                titleInput.value.trim(),
+
+            authors:
+                authors,
+
+            affiliations:
+                affiliations,
+
+            abstract:
+                abstractInput.value.trim(),
+
+            keywords:
+                keywordsInput.value.trim()
+
+        };
+
+
+
+        console.log(
+            "Sending data to Flask:",
+            submissionData
+        );
+
+
+
+        // =========================================
+        // SEND DATA TO FLASK
+        // =========================================
+
+        // Google Apps Script Web App URL
+        // Replace this URL with your deployed Google Apps Script URL.
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYSY2TIszZkSW-HN3eJQnt3-7mIw0XKfz1FZMNC2S3zdTKljnDF-9cwEzjg0xoClLG/exec";
+
+        // Send without CORS response reading. Google Apps Script receives the POST,
+        // but the browser cannot inspect its response from another origin.
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(submissionData)
+        })
+        .then(() => {
+            successBox.innerHTML = `
+                <strong>Abstract submitted successfully!</strong><br>
+                Your submission has been sent for recording.
+            `;
+            successBox.style.display = "block";
+            errorBox.style.display = "none";
+            successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        })
+        .catch(error => {
+            console.error("Submission error:", error);
+            errorBox.textContent = "Unable to send the abstract. Please try again.";
+            errorBox.style.display = "block";
+        });
+
+    }
+
+
+    // =========================================
+    // MAIN FIELD EVENTS
+    // =========================================
+
+    document
+        .getElementById("title")
+        .addEventListener(
+            "input",
+            updatePreview
+        );
+
+
+    document
+        .getElementById("abstract")
+        .addEventListener(
+            "input",
+            updatePreview
+        );
+
+
+    document
+        .getElementById("keywords")
+        .addEventListener(
+            "input",
+            updatePreview
+        );
+
+</script>
+
+<footer style="text-align:center; padding:18px 20px; background:#5d0014; color:#fff; font-size:13px;">
+    NCSET-2026 · School of Advanced Sciences · VIT, Chennai
+</footer>
+
+</body>
+</html>
+
+
